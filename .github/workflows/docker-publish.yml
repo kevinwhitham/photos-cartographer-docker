@@ -15,8 +15,8 @@ permissions:
   contents: read
   packages: write
 
-jobs:
-  get-latest-upstream-release:
+jobs:   
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Latest Release of photos-cartographer
@@ -24,10 +24,7 @@ jobs:
           # Use standard GITHUB_TOKEN for public repos; use a custom PAT for private repos
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         run: |
-          gh release download --repo "sigfridvonshrink/photos-cartographer" --pattern 'photos-cartographer' --pattern 'photos-config-defaults.json' --dir /upstream-assets
-  build-and-push:
-    runs-on: ubuntu-latest
-    steps:
+          gh release download --repo "sigfridvonshrink/photos-cartographer" --pattern 'photos-cartographer' --pattern 'photos-config-defaults.json' --dir ./upstream-assets
       - uses: actions/checkout@v6
       - name: Log in to the Container registry
         uses: docker/login-action@v3
