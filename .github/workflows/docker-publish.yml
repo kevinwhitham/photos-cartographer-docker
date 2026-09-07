@@ -3,12 +3,12 @@ name: Docker Publish
 on:
   push:
     branches:
-      - release
+      - master
     tags:
       - "v*"
   pull_request:
     branches:
-      - release
+      - master
   workflow_dispatch:
 
 permissions:
