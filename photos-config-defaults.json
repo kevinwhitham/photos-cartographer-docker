@@ -1,0 +1,81 @@
+{
+  "camera_time_and_timezone_policy": {
+    "default_folder_timezone": "",
+    "device_groups": {
+      "fixed_clock_cameras": ["Canon EOS R7", "DJI OsmoAction5 Pro", "Canon EOS DIGITAL REBEL XT"],
+      "phones": ["Pixel 9a"]
+    },
+    "dst_conflict_tolerance_seconds": 120,
+    "manual_segment_template_count": 2,
+    "multi_anchor_auto_apply": true,
+    "phone_gpx_agreement_tolerance_seconds": 60,
+    "phone_gpx_conflict_threshold_seconds": 300,
+    "phone_gpx_max_distance_meters": 250,
+    "single_anchor_auto_apply": false,
+    "write_corrected_filename_times": true,
+    "write_corrected_metadata_times": true,
+    "write_corrected_offset_tags": true
+  },
+  "destination_distribution_subfolders": [
+    "jpg",
+    "tif"
+  ],
+  "filename_timestamp_format": "%Y-%m-%d--%H-%M-%S",
+  "folders": {
+    "missing_metadata": "2-missing-metadata",
+    "photos_by_date": "5-photos-by-date",
+    "photos_by_dest": "6-photos-by-dest",
+    "redundant_jpgs": "3-redundant-jpgs",
+    "sources": "0-sources",
+    "strays": "1-strays",
+    "videos_by_date": "4-videos-by-date"
+  },
+  "gpx_anchor_max_clock_error_seconds": 172800.0,
+  "gpx_anchor_max_point_distance_meters": 50.0,
+  "gpx_anchor_max_segment_distance_meters": 50.0,
+  "gpx_anchor_offset_spread_max_seconds": 120.0,
+  "gpx_direct_match_max_seconds": 60.0,
+  "gpx_extrapolation_max_seconds": 300.0,
+  "gpx_interpolation_max_distance_meters": 1000.0,
+  "gpx_interpolation_max_gap_seconds": 1800.0,
+  "gpx_interpolation_max_speed_kmh": 150.0,
+  "gpx_root": "/gpx",
+  "media_extensions": {
+    "image": [
+      "jpg",
+      "jpeg",
+      "png",
+      "heic",
+      "tiff"
+    ],
+    "raw": [
+      "cr2",
+      "cr3",
+      "nef",
+      "arw",
+      "dng"
+    ],
+    "video": [
+      "mp4",
+      "mov",
+      "avi",
+      "mkv"
+    ]
+  },
+  "merge": {
+    "collision_policy": "suffix_incoming",
+    "library_root": "/library",
+    "placement_policy": "preserve_destination_structure"
+  },
+  "photo_anchor_extrapolation_max_seconds": 300.0,
+  "photo_anchor_interpolation_max_gap_seconds": 1800.0,
+  "zfs": {
+    "datasets": {
+      "library": "auto",
+      "workspace": "auto"
+    },
+    "enabled": false,
+    "snapshot_prefix": "photos-cartographer-",
+    "snapshots_required": false
+  }
+}
