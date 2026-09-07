@@ -3,12 +3,12 @@ name: Docker Publish
 on:
   push:
     branches:
-      - main
+      - release
     tags:
       - "v*"
   pull_request:
     branches:
-      - main
+      - release
   workflow_dispatch:
 
 permissions:
@@ -16,6 +16,15 @@ permissions:
   packages: write
 
 jobs:
+  get-latest-upstream-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Latest Release of photos-cartographer
+        env:
+          # Use standard GITHUB_TOKEN for public repos; use a custom PAT for private repos
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        run: |
+          gh release download --repo "sigfridvonshrink/photos-cartographer" --pattern 'photos-cartographer' --pattern 'photos-config-defaults.json' --dir /upstream-assets
   build-and-push:
     runs-on: ubuntu-latest
     steps:
