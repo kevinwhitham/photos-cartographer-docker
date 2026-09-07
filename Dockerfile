@@ -35,4 +35,4 @@ EXPOSE 8766
 # hostname -I gets the externally accessible IP of the docker container
 # the default IP is localhost 127.0.0.1 which is not accessible outside the container
 WORKDIR /photos
-ENTRYPOINT ["/bin/bash", "-c", "photos-cartographer console --port 8766 --host $(hostname -I)"]
+ENTRYPOINT ["/bin/bash", "-c", "photos-cartographer console --port 8766 --host $(hostname -I | awk '{print $1}')"]
