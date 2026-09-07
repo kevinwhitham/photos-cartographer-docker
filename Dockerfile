@@ -7,14 +7,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     exiftool \
     ffmpeg \
     imagemagick \
-    vim \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy the pre-downloaded files from your local directory into the container
-COPY ./upstream-assets/photos-cartographer ./upstream-assets/photos-config-defaults.json ./
+COPY photos-cartographer photos-config-defaults.json ./
 
 # Make the binary executable and test the version output
 RUN chmod +x photos-cartographer
