@@ -1,4 +1,4 @@
-{
+  {
   "camera_time_and_timezone_policy": {
     "default_folder_timezone": "",
     "device_groups": {
@@ -39,7 +39,7 @@
   "gpx_interpolation_max_distance_meters": 1000.0,
   "gpx_interpolation_max_gap_seconds": 1800.0,
   "gpx_interpolation_max_speed_kmh": 150.0,
-  "gpx_root": "/gpx",
+  "gpx_root": "/external/gpx",
   "media_extensions": {
     "image": [
       "jpg",
@@ -64,7 +64,7 @@
   },
   "merge": {
     "collision_policy": "suffix_incoming",
-    "library_root": "/library",
+    "library_root": "/external/library",
     "placement_policy": "preserve_destination_structure"
   },
   "photo_anchor_extrapolation_max_seconds": 300.0,
