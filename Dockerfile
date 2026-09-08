@@ -20,7 +20,7 @@ RUN chmod +x photos-cartographer
 
 # Create mount points for local media and track data
 # These directories match photos-config-defaults.json
-VOLUME ["/photos", "/gpx", "/library"]
+VOLUME ["/external"]
 
 ENV PATH="/app:$PATH"
 
@@ -33,5 +33,5 @@ EXPOSE 8766
 # Set the entrypoint to run the web console interface
 # hostname -I gets the externally accessible IP of the docker container
 # the default IP is localhost 127.0.0.1 which is not accessible outside the container
-WORKDIR /photos
+WORKDIR /external/photos
 ENTRYPOINT ["/bin/bash", "-c", "photos-cartographer console --port 8766 --host $(hostname -I | awk '{print $1}')"]
