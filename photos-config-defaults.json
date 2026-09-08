@@ -2,8 +2,8 @@
   "camera_time_and_timezone_policy": {
     "default_folder_timezone": "",
     "device_groups": {
-      "fixed_clock_cameras": ["Canon EOS R7", "DJI OsmoAction5 Pro", "Canon EOS DIGITAL REBEL XT"],
-      "phones": ["Pixel 9a"]
+      "fixed_clock_cameras": ["3620707840|Canon|Canon EOS DIGITAL REBEL XT|unknown"],
+      "phones": []
     },
     "dst_conflict_tolerance_seconds": 120,
     "manual_segment_template_count": 2,
