@@ -2,7 +2,7 @@
   "camera_time_and_timezone_policy": {
     "default_folder_timezone": "",
     "device_groups": {
-      "fixed_clock_cameras": ["3620707840|Canon|Canon EOS DIGITAL REBEL XT|unknown"],
+      "fixed_clock_cameras": [],
       "phones": []
     },
     "dst_conflict_tolerance_seconds": 120,
