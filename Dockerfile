@@ -22,7 +22,7 @@ RUN chmod +x photos-cartographer
 VOLUME ["/photos-cartographer-config"]
 
 # Copy the default settings file
-COPY photos-config-defaults.json /photos-cartographer-config
+COPY photos-config-defaults.json /photos-cartographer-config/photos-config-defaults.json
 
 # Create a link to the settings file in the app dir
 RUN ln -s /photos-cartographer-config/photos-config-defaults.json /app/photos-config-defaults.json
