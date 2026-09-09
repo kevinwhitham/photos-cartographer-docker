@@ -2,7 +2,6 @@
 FROM python:3.11-slim
 
 # Install system dependencies (exiftool, ffmpeg, imagemagick)
-# Also install VIM to edit the config file during a run of photos-cartographer
 RUN apt-get update && apt-get install -y --no-install-recommends \
     exiftool \
     ffmpeg \
@@ -21,6 +20,11 @@ RUN chmod +x photos-cartographer photos-cartographer-start.sh
 
 # Create a mount point for the default settings file
 VOLUME ["/photos-cartographer-config"]
+
+# App will access config settings by a symlink to config file on host
+# must do this at build time because /app is owned by root
+# but the target file will be copied or mounted at runtime by any user
+RUN ln -s /photos-cartographer-config/photos-config-defaults.json /app/photos-config-defaults.json
 
 # Create mount point for media, GPX track, and photo library
 # Sub-directories are set in photos-config-defaults.json
