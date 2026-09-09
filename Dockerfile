@@ -14,6 +14,7 @@ WORKDIR /app
 
 # Copy the app
 COPY photos-cartographer ./
+COPY photos-config-defaults.json /default-settings
 
 # Make the binary executable and test the version output
 RUN chmod +x photos-cartographer
@@ -21,11 +22,11 @@ RUN chmod +x photos-cartographer
 # Create a mount point for the default settings file
 VOLUME ["/photos-cartographer-config"]
 
-# Copy the default settings file
-COPY photos-config-defaults.json /photos-cartographer-config/photos-config-defaults.json
+# Copy the default settings file only if it does not yet exist on the host
+CMD ["cp", "--no-clobber", "/default-settings/photos-config-defaults.json", "/photos-cartographer-config/photos-config-defaults.json"]
 
-# Create a link to the settings file in the app dir
-RUN ln -s /photos-cartographer-config/photos-config-defaults.json /app/photos-config-defaults.json
+# Create a symbolic link from the app dir to the settings file on the host
+CMD ["ln", "-s", "/photos-cartographer-config/photos-config-defaults.json", "/app/photos-config-defaults.json"]
 
 # Create mount point for media, GPX track, and photo library
 # Sub-directories are set in photos-config-defaults.json
