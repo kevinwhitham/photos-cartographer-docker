@@ -14,7 +14,7 @@ WORKDIR /app
 
 # Copy the app
 COPY photos-cartographer ./
-COPY photos-config-defaults.json /default-settings
+COPY photos-config-defaults.json /default-settings/photos-config-defaults.json
 
 # Make the binary executable and test the version output
 RUN chmod +x photos-cartographer
