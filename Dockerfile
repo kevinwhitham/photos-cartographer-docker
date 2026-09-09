@@ -13,20 +13,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 # Copy the app
-COPY photos-cartographer ./
-COPY photos-config-defaults.json /default-settings/photos-config-defaults.json
+COPY photos-cartographer photos-cartographer-start.sh ./
+COPY photos-config-defaults.json /default-settings/
 
 # Make the binary executable and test the version output
-RUN chmod +x photos-cartographer
+RUN chmod +x photos-cartographer photos-cartographer-start.sh
 
 # Create a mount point for the default settings file
 VOLUME ["/photos-cartographer-config"]
-
-# Copy the default settings file only if it does not yet exist on the host
-CMD ["cp", "--no-clobber", "/default-settings/photos-config-defaults.json", "/photos-cartographer-config/photos-config-defaults.json"]
-
-# Create a symbolic link from the app dir to the settings file on the host
-CMD ["ln", "-s", "/photos-cartographer-config/photos-config-defaults.json", "/app/photos-config-defaults.json"]
 
 # Create mount point for media, GPX track, and photo library
 # Sub-directories are set in photos-config-defaults.json
@@ -44,4 +38,4 @@ EXPOSE 8766
 # hostname -I gets the externally accessible IP of the docker container
 # the default IP is localhost 127.0.0.1 which is not accessible outside the container
 WORKDIR /external/photos
-ENTRYPOINT ["/bin/bash", "-c", "photos-cartographer console --port 8766 --host $(hostname -I | awk '{print $1}')"]
+ENTRYPOINT ["/bin/bash", "-c", "/app/photos-cartographer-start.sh"]
